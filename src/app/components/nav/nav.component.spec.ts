@@ -3,14 +3,13 @@
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { addProviders, async, inject } from '@angular/core/testing';
-import { Router } from '@angular/router';
 
-import { SignupComponent } from './signup.component';
+import { NavComponent } from './nav.component';
 import { UserService } from '../../services/user.service';
 
-describe('Component: Signup', () => {
-  it('should create an instance', inject([UserService, Router], (userService: UserService, router: Router) => {
-    let component = new SignupComponent(userService, router);
+describe('Component: Nav', () => {
+  it('should create an instance', inject([UserService], (userService: UserService) => {
+    let component = new NavComponent(userService);
     expect(component).toBeTruthy();
   }));
 });

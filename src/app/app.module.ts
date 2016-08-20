@@ -1,31 +1,25 @@
 import { NgModule }       from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
-import { HttpModule, JsonpModule } from '@angular/http';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent }   from './app.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { HomeComponent } from './components/home/home.component';
-import { routing,
-         appRoutingProviders } from './app.routing';
-
+import { HomeModule } from './components/home/home.module';
+import { SignupModule } from './components/signup/signup.module';
+import { routing } from './app.routing';
+import { UserService } from './services/user.service';
 
 @NgModule({
-    imports:      [
+    imports: [
         BrowserModule,
-        routing,
         FormsModule,
         HttpModule,
-        JsonpModule
+        routing,
+        HomeModule,
+        SignupModule
     ],
-    declarations: [
-        AppComponent,
-        SignupComponent,
-        HomeComponent
-    ],
-    providers: [
-        appRoutingProviders
-    ],
-    bootstrap:    [AppComponent],
+    declarations: [ AppComponent ],
+    providers: [ UserService ],
+    bootstrap: [ AppComponent ],
 })
 export class AppModule {}

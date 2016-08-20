@@ -1,13 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Headers, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+
+import { User } from '../models/user';
 
 @Injectable()
 export class UserService {
 
-  constructor() { }
+  private usersUrl = 'http://localhost:3000/api/users';
+  currentUser: User;
 
-  addUser (name: string, email: string, password: string): Observable<Hero> {
-    let body = JSON.stringify({ name });
+  constructor(private http: Http) { }
+
+  addUser (name: string, email: string, password: string): Observable<User> {
+    let body = { 
+      name: name,
+      email: email,
+      password: password
+    };
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
@@ -18,7 +28,7 @@ export class UserService {
   
   private extractData(res: Response) {
     let body = res.json();
-    return body.data || { };
+    return body || { };
   }
   
   private handleError (error: any) {
@@ -28,5 +38,10 @@ export class UserService {
     error.status ? `${error.status} - ${error.statusText}` : 'Server error';
     console.error(errMsg); // log to console instead
     return Observable.throw(errMsg);
+  }
+
+  setUser(user) {
+    // localStorage.setItem('user', JSON.stringify(user));
+    this.currentUser = user;
   }
 }

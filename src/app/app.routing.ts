@@ -1,23 +1,11 @@
 import { Routes, RouterModule }   from '@angular/router';
 
-import { SignupComponent } from './components/signup/signup.component';
-import { HomeComponent } from './components/home/home.component';
-
-const appRoutes: Routes = [
-    {
-        path: 'signup',
-        component: SignupComponent
-    },
-    {
-        path: '',
-        component: HomeComponent
-    }
+export const routes: Routes = [
+    { path: 'signup', loadChildren: 'app/components/signup/signup.module' },
+    { path: '', loadChildren: 'app/components/home/home.module' }
 ];
 
-export const appRoutingProviders: any[] = [
-];
-
-export const routing = RouterModule.forRoot(appRoutes);
+export const routing = RouterModule.forRoot(routes);
 
 
 /*
