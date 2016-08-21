@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
-import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
+import { UserService } from '../../shared/user.service';
 
 @Component({
   moduleId: module.id,
@@ -8,21 +8,23 @@ import { UserService } from '../../services/user.service';
   templateUrl: 'nav.component.html',
   styleUrls: ['nav.component.css']
 })
-export class NavComponent {
-    user: any;
+export class NavComponent implements OnInit{
+    userName: string;
 
-    constructor(private userService: UserService) {
-        // this.user = localStorage.getItem('user');
-        this.user = userService.currentUser;
-
+    constructor(private userService: UserService, private router: Router) {
+        router.events.subscribe(path => {
+            this.getUsername();
+        });
     }
-    
-    // getUser() {
-    //     // this.user = localStorage.getItem('user');
-    //     this.user = this.userService.currentUser;
-    // }
 
-    // signout() {
-    //     localStorage.removeItem('user');
-    // }
+    ngOnInit() {
+        if (localStorage.getItem('authToken')) {
+            this.getUsername();
+        }
+    }
+
+    getUsername() {
+        var user = this.userService.currentUser;
+        if (user) this.userName = user.name;
+    }
 }

@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
-    imports: [],
-    declarations: [],
-    providers: []
+    imports: [ SharedModule ]
 })
 export class NavModule {}

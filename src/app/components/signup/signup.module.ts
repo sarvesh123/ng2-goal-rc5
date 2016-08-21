@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
+import { SharedModule } from '../../shared/shared.module';
 
 import { SignupComponent } from './signup.component';
 import { routing } from './signup.routing';
 
 @NgModule({
-    imports: [ routing, FormsModule ],
+    imports: [ routing, SharedModule ],
     declarations: [ SignupComponent ],
     providers: []
 })
 
-export class SignupModule {}
+export default class SignupModule {}

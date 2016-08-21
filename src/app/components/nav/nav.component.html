@@ -5,6 +5,9 @@
                 <li><a routerLink="/">Home</a></li>
                 <li><a routerLink="/signup">Sign Up</a></li>
             </ul>
+            <ul *ngIf="userName" class="nav navbar-nav pull-right">
+                <li><a>Hello {{userName}}</a></li>
+            </ul>
         </div><!--/.nav-collapse -->
     </div>
 </nav>

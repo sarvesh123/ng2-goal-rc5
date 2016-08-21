@@ -2,14 +2,13 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { User } from '../../models/user';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../shared/user.service';
 
 @Component({
     moduleId: module.id,
     selector: 'app-signup',
     templateUrl: 'signup.component.html',
-    styleUrls: ['signup.component.css'],
-    providers: [UserService]
+    styleUrls: ['signup.component.css']
 })
 export class SignupComponent {
 
@@ -28,8 +27,12 @@ export class SignupComponent {
 
     onRegisterSuccess(res) {
         if (res.status) {
-          this.userService.setUser(res.user);
+            localStorage.setItem('authToken', res.token);
+            this.userService.setUser(res.user);
+            this.router.navigate(['']);
         }
-        this.router.navigate(['']);
+        else {
+            this.errorMessage = res.message;
+        }
     }
 }
