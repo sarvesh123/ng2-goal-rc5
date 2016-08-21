@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-
+import { Router } from '@angular/router';
 import { User } from '../models/user';
 
 @Injectable()
@@ -10,7 +10,7 @@ export class UserService {
   private usersUrl = 'http://localhost:3000/api/users';
   currentUser: User;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private router: Router) { }
 
   addUser (name: string, email: string, password: string): Observable<User> {
     let body = { 
@@ -22,6 +22,19 @@ export class UserService {
     let options = new RequestOptions({ headers: headers });
 
     return this.http.post(this.usersUrl, body, options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  login (email: string, password: string): Observable<User> {
+    let body = { 
+      email: email,
+      password: password
+    };
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.usersUrl + '/login', body, options)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
@@ -44,4 +57,11 @@ export class UserService {
     // localStorage.setItem('user', JSON.stringify(user));
     this.currentUser = user;
   }
+
+    onSubmitSuccess(res) {
+        localStorage.setItem('authToken', res.token);
+        this.setUser(res.user);
+        this.router.navigate(['']);
+    }
+
 }

@@ -5,7 +5,6 @@ import { AppComponent }   from './app.component';
 
 import { HomeModule } from './components/home/home.module';
 import { SharedModule } from './shared/shared.module';
-import { NavModule } from './components/nav/nav.module';
 import { routing } from './app.routing';
 
 @NgModule({
@@ -13,8 +12,7 @@ import { routing } from './app.routing';
         BrowserModule,
         routing,
         HomeModule,
-        SharedModule.forRoot(),
-        NavModule
+        SharedModule.forRoot()
     ],
     declarations: [ AppComponent ],
     bootstrap: [ AppComponent ],

@@ -12,7 +12,7 @@ import { UserService } from '../../shared/user.service';
 })
 export class SignupComponent {
 
-    user = new User(1, 'sarvesh shejwadkar', 'a@a.com', '123456');
+    user = new User('sarvesh shejwadkar', 'a@a.com', '123456');
 
     errorMessage: string;
 
@@ -27,9 +27,7 @@ export class SignupComponent {
 
     onRegisterSuccess(res) {
         if (res.status) {
-            localStorage.setItem('authToken', res.token);
-            this.userService.setUser(res.user);
-            this.router.navigate(['']);
+            this.userService.onSubmitSuccess(res);
         }
         else {
             this.errorMessage = res.message;

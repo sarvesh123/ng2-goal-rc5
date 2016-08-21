@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavComponent } from './components/nav/nav.component';
 import './rxjs-operators';
+
+import { NavComponent } from './components/nav/nav.component';
 
 @Component({
   moduleId: module.id,
