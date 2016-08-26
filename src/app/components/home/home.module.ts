@@ -8,4 +8,4 @@ import { routing } from './home.routing';
     imports: [ SharedModule, routing ],
     declarations: [ HomeComponent ]
 })
-export class HomeModule {}
+export default class HomeModule {}
