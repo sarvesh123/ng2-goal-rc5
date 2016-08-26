@@ -10,10 +10,12 @@ import { UserService } from '../../shared/user.service';
 })
 export class NavComponent implements OnInit{
     userName: string;
+    private loggedIn = false;
 
     constructor(private userService: UserService, private router: Router) {
         router.events.subscribe(path => {
             this.getUsername();
+            this.loggedIn = !!localStorage.getItem('authToken');
         });
     }
 
@@ -25,7 +27,6 @@ export class NavComponent implements OnInit{
 
     getUsername() {
         var user = JSON.parse(localStorage.getItem('user'));
-        console.log(user);
         if (user) {
             this.userName = user.name;
         }
