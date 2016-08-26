@@ -3,12 +3,12 @@
 import { By }           from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { addProviders, async, inject } from '@angular/core/testing';
-import { LoginComponent } from './login.component';
+import { LogoutComponent } from './logout.component';
 import { UserService } from '../../shared/user.service';
 
-describe('Component: Login', () => {
+describe('Component: Logout', () => {
   it('should create an instance', inject([UserService], (userService: UserService) => {
-    let component = new LoginComponent(userService);
+    let component = new LogoutComponent(userService);
     expect(component).toBeTruthy();
   }));
 });

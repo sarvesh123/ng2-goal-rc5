@@ -6,7 +6,7 @@ import { addProviders, async, inject } from '@angular/core/testing';
 import { Router } from '@angular/router';
 
 import { SignupComponent } from './signup.component';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../shared/user.service';
 
 describe('Component: Signup', () => {
   it('should create an instance', inject([UserService, Router], (userService: UserService, router: Router) => {

@@ -54,7 +54,7 @@ export class UserService {
   }
 
   setUser(user) {
-    // localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('user', JSON.stringify(user));
     this.currentUser = user;
   }
 
@@ -62,6 +62,12 @@ export class UserService {
         localStorage.setItem('authToken', res.token);
         this.setUser(res.user);
         this.router.navigate(['']);
+    }
+
+    logout() {
+      localStorage.removeItem('authToken');
+      localStorage.removeItem('user');
+      this.router.navigate(['']);
     }
 
 }

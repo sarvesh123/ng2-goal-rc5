@@ -24,7 +24,13 @@ export class NavComponent implements OnInit{
     }
 
     getUsername() {
-        var user = this.userService.currentUser;
-        if (user) this.userName = user.name;
+        var user = JSON.parse(localStorage.getItem('user'));
+        console.log(user);
+        if (user) {
+            this.userName = user.name;
+        }
+        else {
+            this.userName = '';
+        }
     }
 }
