@@ -31,4 +31,8 @@ export class LoginComponent {
             this.errorMessage = res.message;
         }
     }
+
+    twitterLogin() {
+        this.userService.initTwitterLogin();
+    }
 }

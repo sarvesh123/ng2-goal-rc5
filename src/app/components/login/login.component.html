@@ -1,5 +1,6 @@
 <h1>Log In</h1>
 <hr>
+<div><a (click)="twitterLogin()">Log In with Twitter</a></div><br>
 <p class="bg-danger text-danger" *ngIf="errorMessage" style="padding: 10px;">{{errorMessage}}</p>
 <form (ngSubmit)="login()">
   <div class="form-group">

@@ -8,6 +8,7 @@ import { User } from '../models/user';
 export class UserService {
 
   private usersUrl = 'http://localhost:3000/api/users';
+  private twitterAuthUrl = 'http://localhost:3000/api/auth/twitter';
   currentUser: User;
 
   constructor(private http: Http, private router: Router) { }
@@ -70,4 +71,7 @@ export class UserService {
       this.router.navigate(['']);
     }
 
+    initTwitterLogin() {
+        window.location.href = this.twitterAuthUrl;
+    }
 }
