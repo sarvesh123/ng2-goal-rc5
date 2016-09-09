@@ -42,6 +42,7 @@ const barrels: string[] = [
   'app/components/nav',
   'app/components/login',
   'app/components/logout',
+  'app/components/login/twitter',
   /** @cli-barrel */
 ];
 

@@ -13,7 +13,7 @@ export class LoginComponent {
   errorMessage: string;
 
   constructor(private userService: UserService) {
-    this.user = new User('sarvesh shejwadkar', 'a@a.com', '123456');
+    this.user = new User('', '', '');
   }
 
     login () {

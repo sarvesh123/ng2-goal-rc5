@@ -74,4 +74,12 @@ export class UserService {
     initTwitterLogin() {
         window.location.href = this.twitterAuthUrl;
     }
+
+    getProfile() {
+      let headers = new Headers({ 'withCredentials ': true });
+      let options = new RequestOptions({ headers: headers });
+      return this.http.get(this.usersUrl + '/profile', { withCredentials: true })
+                      .map(this.extractData)
+                      .catch(this.handleError);
+    }
 }
