@@ -6,6 +6,7 @@
                 <li *ngIf="!loggedIn"><a routerLink="/signup">Sign Up</a></li>
                 <li *ngIf="!loggedIn"><a routerLink="/login">Log In</a></li>
                 <li *ngIf="loggedIn"><a routerLink="/logout">Log Out</a></li>
+                <li *ngIf="loggedIn"><a routerLink="/chat">Chat</a></li>
             </ul>
             <ul *ngIf="userName" class="nav navbar-nav pull-right">
                 <li><a>Hello {{userName}}</a></li>
