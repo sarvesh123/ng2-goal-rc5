@@ -1,4 +1,18 @@
 <p>
   chat works!
 </p>
-<div *ngFor="let chat of chats">{{chat}}</div>
+<div *ngFor="let chat of chats">
+  {{chat.sender.name}}: {{chat.message}}
+</div>
+<p>{{errorMessage}}</p>
+<form (ngSubmit)="send()">
+
+  <div class="form-group">
+    <label for="message">Message:</label>
+    <textarea [(ngModel)]="newMessage" name="message" class="form-control" placeholder="Message..." required></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-default">Send</button>
+  <button class="btn btn-default">Clear</button>
+
+</form>
